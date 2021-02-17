@@ -93,7 +93,7 @@ For example:
 | XI      | 11      |
 
  
-Please view the Wikipedia article on [Roman Numerals](https://en.wikipedia.org/wiki/Roman_numerals) for more information.
+Please refer to the Wikipedia article on [Roman Numerals](https://en.wikipedia.org/wiki/Roman_numerals) for more information.
 
 ## Technical Overview
 This application was built using the [Spring Framework](https://spring.io/projects/spring-framework) and on
