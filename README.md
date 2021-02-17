@@ -1,11 +1,45 @@
 # Roman Numeral
 Dockerized web service that takes in an integer number and outputs a Roman Numeral.
 
-
 ## Requirements
-- Java 11 - OpenJDK preferred.
-- Maven 3.
-- Docker.
+#### Java 11 - OpenJDK preferred
+
+Verify with:
+```bash
+$ java -version
+```
+Expected response:
+```bash
+java version "11.0.10" 2021-01-19 LTS
+Java(TM) SE Runtime Environment 18.9 (build 11.0.10+8-LTS-162)
+Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.10+8-LTS-162, mixed mode)
+```
+     
+#### Maven 3
+ 
+Verify with:
+```bash
+$ mvn -version
+```
+Expected response:
+```bash
+Apache Maven 3.6.3 (cecedd343002696d0abb50b32b541b8a6ba2883f)
+Maven home: C:\Program Files (x86)\apache-maven-3.6.3\bin\..
+Java version: 11.0.10, vendor: Oracle Corporation, runtime: C:\Program Files\Java\jdk-11.0.10
+Default locale: en_US, platform encoding: Cp1252
+OS name: "windows 10", version: "10.0", arch: "amd64", family: "windows"
+```
+  
+#### Docker
+
+Verify with:
+```bash
+$ docker --version
+```
+Expected response:
+```bash
+Docker version 20.10.2, build 2291f61
+```
 
 ## Installation
 1. Open a terminal and navigate to project folder.
@@ -13,7 +47,7 @@ Dockerized web service that takes in an integer number and outputs a Roman Numer
     $ cd ~/workspace/roman-numeral
     ```
 
-2. Use maven to build the Java project and generate a Jar.
+2. Use Maven to build the Java project and generate a Jar.
     ```bash
     $ mvn clean install
     ```
@@ -24,127 +58,73 @@ Dockerized web service that takes in an integer number and outputs a Roman Numer
     ```
 
 ## Usage
-- The application is available on port 8080.
-    
-    E.g. http://localhost:8080/romannumeral?query=123
-- Prometheus is used for monitoring and published on port 9090.
+The application is available on port 8080.
+- E.g. http://localhost:8080/romannumeral?query=123
 
-    E.g. http://localhost:9090/graph?g0.expr=romannumeral_get_request_seconds_sum&g0.tab=0&g0.stacked=1&g0.range_input=5m
-- Alerts are here: http://localhost:9090/alerts
+Prometheus is used for monitoring and published on port 9090.
+- E.g. http://localhost:9090/graph?g0.expr=romannumeral_get_request_seconds_sum&g0.tab=0&g0.stacked=1&g0.range_input=5m
 
+Alerts are avilable in Prometheus.
+- http://localhost:9090/alerts
 
+## About Roman Numerals
+Roman numerals use a series of symbols with different values:
 
+| Symbol | Value  |
+| :----: | :----: |
+| I      | 1      |
+| V      | 5      |
+| X      | 10     |
+| L      | 50     |
+| C      | 100    |
+| D      | 500    |
+| M      | 1000   |
 
+Lower value symbols placed to the left of a higher value symbol substract from the total, whereas if the order is inverted, then the total is the sum of the components.
 
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+For example:
 
-Please make sure to update tests as appropriate.
+| Numeral | Value   |
+| :-----: | :-----: |
+| IX      | 9       |
+| XI      | 11      |
 
-## Logging
-- Logback
-- Sent to host
+ 
+Please view the Wikipedia article on [Roman Numerals](https://en.wikipedia.org/wiki/Roman_numerals) for more information.
 
-## Monitoring
-- Prometeus - running on port 9090
-http://localhost:9090/targets
+## Technical Overview
+This application was built using the [Spring Framework](https://spring.io/projects/spring-framework) and on
+[Java](https://openjdk.java.net/projects/jdk/11/).
 
-## License
-[MIT](https://choosealicense.com/licenses/mit/)
+It relies on [Maven](https://maven.apache.org/) for build automation and dependency management.
 
+#### Testing
 
-## Tech Overview
-- Programming Language: [Java](https://openjdk.java.net/projects/jdk/11/)
-- Application Framework: [Spring](https://spring.io/projects/spring-framework)  
-- Buid and Dependency Manager: [Maven](https://maven.apache.org/)
+This code is covered by Unit tests on all business logic.
+The web layer (Controllers) are tested using Integration tests, provided by Spring Boot.
+Mockito shall be used in the future when there are new dependencies on other systems. E.g. a database. 
 
+#### Logging
+Docker logs are available outside of the container, in the host, under the logs folder: [./logs](logs).
 
-## Spring Boot
-[Spring Initializr](https://start.spring.io/) was used to generate a project using the Spring Boot framework
-- Version: 2.4.2
+Archived log files are retained for up to 90 days.
 
-##### Dependencies:
-- Spring Web: adds support for RESTful applications using Spring MVC. Uses Apache Tomcat as the embedded container.
+#### Monitoring
+Metrics are collected by [Micrometer](https://micrometer.io/), exposed here http://localhost:8080/actuator/prometheus.
+
+Prometheus runs on port 9090 and polls that endpoint periodically. It can show multiple metrics in its UI. It is also used to define alert rules and thresholds. 
+
+#### Spring Boot Dependencies:
+- Spring Web: adds support for RESTful applications using Spring MVC. Ads Apache Tomcat as the embedded container.
 - Spring Boot Actuator: Includes endpoints to monitor the application.
 - Prometheus: Exposes Micrometer metrics in Prometheus format. Includes simple built-in UI, and a query language.
 
-## Maven
+## Roadmap
+- Setup Splunk to aggregate logs and add the ability to create alerts on those logs. 
+- Stand up an alert manager that polls alert information form Prometheus and triggers incidents in Pager Duty.
+- Add CI/CD using existing corporate Jenkins infrastructure.
+- Create Dashboards in Grafana to display Prometheus information for all nodes.
 
+## License
+[GNU GPLv3](https://choosealicense.com/licenses/gpl-3.0/)
 
-
-
-FUTURE:
-Centralized Log aggregator like splunk
-Centralized Monitoring, Grafana?
-
-
-
-
-Requirements:
-Java 11 _ LTS, tested using OpenJDK
-Maven, with Java version 11
-mvn --version
-... otherwise: Fatal error compiling: invalid target release:11
->java --version
->
->
-Docker
-- Prometheus and others?
-
-
-BUILD:
-mvn clean install
-
-docker-compose build
-
-docker-compose up
-
-
-Use EXAMPLE: http://localhost:8080/romannumeral?query=2
-
-
----------------
-OLD
-
------------------
-# Roman Numeral Conversion
-Dockerized web service that takes in a number and outputs a Roman numeral.
-
-
-
-## Build New Container with Tag roman-numerals
-docker build -f Dockerfile -t roman-numeral .
-
-## Run Container
-docker run -p 8080:8080 -it -v C:\Users\tatoh\workspace\roman-numeral-conversion\logs:/logs roman-numerals
-
-
-
-> Spring boot
-> Spring boot web dependency
-> Spring boot ops dependency
-> Docker > java open jdk
-
-
-why java 8
-
-why code style check
-
-
-Configure prometheus
-
-docker pull prom/prometheus
-verify with
-docker image ls
-
-docker run -d --name prometheus -p 9090:9090 -v C:\Users\tatoh\workspace\roman-numeral-conversion\prometheus.yml:/etc/prometheus/prometheus.yml prom/prometheus --config.file=/etc/prometheus/prometheus.yml
-
-
-FUTURE ENHANCEMENTS:
-- Jenkins 
-- Grafana
-- Splunk
-
-docker run -d --name grafana -p 3000:3000 grafana/grafana
-
-Explain where logs get created
