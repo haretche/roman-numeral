@@ -32,7 +32,7 @@ public class RomanNumeralController {
      * If provided input is invalid, then it returns an error message as plain text and status code 400 (bad request).
      */
     @Timed(
-            value = "romannumerals.get.request",
+            value = "romannumeral.get.request",
             histogram = true,
             percentiles = {0.95, 0.99},
             extraTags = {"version", "1.0"}
