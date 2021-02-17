@@ -1,7 +1,27 @@
 # Roman Numeral
 Dockerized web service that takes in an integer number and outputs a Roman Numeral.
 
+
+## Requirements
+- Java 11 - OpenJDK preferred.
+- Maven 3.
+- Docker.
+
 ## Installation
+1. Open a terminal and navigate to project folder.
+    ```bash
+    $ cd ~/workspace/roman-numeral
+    ```
+
+2. Use maven to build the Java project and generate a Jar.
+    ```bash
+    $ mvn clean install
+    ```
+
+3) Build a Docker image and start a container with it.
+    ```bash
+    $ docker-compose up
+    ```
 
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
 
@@ -68,7 +88,9 @@ Centralized Monitoring, Grafana?
 
 Requirements:
 Java 11 _ LTS, tested using OpenJDK
-
+Maven, with Java version 11
+mvn --version
+... otherwise: Fatal error compiling: invalid target release:11
 >java --version
 >
 >
@@ -130,3 +152,5 @@ FUTURE ENHANCEMENTS:
 - Splunk
 
 docker run -d --name grafana -p 3000:3000 grafana/grafana
+
+Explain where logs get created
