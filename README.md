@@ -23,21 +23,18 @@ Dockerized web service that takes in an integer number and outputs a Roman Numer
     $ docker-compose up
     ```
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
-
-```bash
-pip install foobar
-```
-
 ## Usage
+- The application is available on port 8080.
+    
+    E.g. http://localhost:8080/romannumeral?query=123
+- Prometheus is used for monitoring and published on port 9090.
 
-```python
-import foobar
+    E.g. http://localhost:9090/graph?g0.expr=romannumeral_get_request_seconds_sum&g0.tab=0&g0.stacked=1&g0.range_input=5m
+- Alerts are here: http://localhost:9090/alerts
 
-foobar.pluralize('word') # returns 'words'
-foobar.pluralize('goose') # returns 'geese'
-foobar.singularize('phenomena') # returns 'phenomenon'
-```
+
+
+
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
@@ -61,9 +58,6 @@ http://localhost:9090/targets
 - Application Framework: [Spring](https://spring.io/projects/spring-framework)  
 - Buid and Dependency Manager: [Maven](https://maven.apache.org/)
 
-## Java
-- Implementation: OpenJDK
-- Version: 11
 
 ## Spring Boot
 [Spring Initializr](https://start.spring.io/) was used to generate a project using the Spring Boot framework
