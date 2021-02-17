@@ -1,19 +1,53 @@
-# roman-numeral
-Dockerized web service that takes in a number and outputs a Roman Numeral.
+# Roman Numeral
+Dockerized web service that takes in an integer number and outputs a Roman Numeral.
 
-Web framework: Spring Boot
-Dependency management: Maven
+## Installation
 
-Spring Boot version: 2.4.2
-Java version: 11 -> Explain why
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
 
-Spring Boot dependencies:
-WEB: Spring Web
-Build web, including RESTful, applications using Spring MVC. Uses Apache Tomcat as the default embedded container.
+```bash
+pip install foobar
+```
 
-OPS: Spring Boot Actuator
-Supports built in (or custom) endpoints that let you monitor and manage your application - such as application health, metrics, sessions, etc.
+## Usage
 
-OBSERVABILITY: Prometheus
-Expose Micrometer metrics in Prometheus format, an in-memory dimensional time series database with a simple built-in UI, a custom query language, and math operations.
+```python
+import foobar
+
+foobar.pluralize('word') # returns 'words'
+foobar.pluralize('goose') # returns 'geese'
+foobar.singularize('phenomena') # returns 'phenomenon'
+```
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
+
+
+## Tech Overview
+- Programming Language: [Java](https://openjdk.java.net/projects/jdk/11/)
+- Application Framework: [Spring](https://spring.io/projects/spring-framework)  
+- Buid and Dependency Manager: [Maven](https://maven.apache.org/)
+
+## Java
+- Implementation: OpenJDK
+- Version: 11
+
+## Spring Boot
+[Spring Initializr](https://start.spring.io/) was used to generate a project using the Spring Boot framework
+- Version: 2.4.2
+
+##### Dependencies:
+- Spring Web: adds support for RESTful applications using Spring MVC. Uses Apache Tomcat as the embedded container.
+- Spring Boot Actuator: Includes endpoints to monitor the application.
+- Prometheus: Exposes Micrometer metrics in Prometheus format. Includes simple built-in UI, and a query language.
+
+## Maven
+
+
+
 
