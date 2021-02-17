@@ -12,7 +12,7 @@
 	<artifactId>roman-numeral</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>roman-numeral</name>
-	<description>Web service that takes in a number and outputs a Roman Numeral.</description>
+	<description>Web service that takes in a number and outputs a Roman numeral.</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -25,10 +25,15 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>io.micrometer</groupId>
+			<artifactId>micrometer-core</artifactId>
+			<version>1.6.3</version>
+		</dependency>
 		<dependency>
 			<groupId>io.micrometer</groupId>
 			<artifactId>micrometer-registry-prometheus</artifactId>
+			<version>1.6.3</version>
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
@@ -45,6 +50,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
+		<finalName>roman-numeral</finalName>
 	</build>
 
 </project>
