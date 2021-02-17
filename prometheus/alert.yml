@@ -1,0 +1,6 @@
+groups:
+  - name: CriticalAlerts
+    rules:
+      - alert: InstanceDown
+        expr: up{job="roman-numbers-web"} < 1
+        for: 2m

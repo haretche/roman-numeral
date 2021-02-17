@@ -24,6 +24,13 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 Please make sure to update tests as appropriate.
 
+## Logging
+- Logback
+- Sent to host
+
+## Monitoring
+- Prometeus - running on port 9090
+
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
 
@@ -50,4 +57,8 @@ Please make sure to update tests as appropriate.
 
 
 
+
+FUTURE:
+Centralized Log aggregator like splunk
+Centralized Monitoring, Grafana?
 
