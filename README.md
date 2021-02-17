@@ -42,17 +42,20 @@ Docker version 20.10.2, build 2291f61
 ```
 
 ## Installation
-1. Open a terminal and navigate to project folder.
+
+1. Download source code, and extract into a folder in workspace.
+
+2. Open a terminal and navigate to project folder.
     ```bash
     $ cd ~/workspace/roman-numeral
     ```
 
-2. Use Maven to build the Java project and generate a Jar.
+3. Use Maven to build the Java project and generate a Jar.
     ```bash
     $ mvn clean install
     ```
 
-3) Build a Docker image and start a container with it.
+4. Build a Docker image and start a container with it.
     ```bash
     $ docker-compose up
     ```
