@@ -30,6 +30,7 @@ Please make sure to update tests as appropriate.
 
 ## Monitoring
 - Prometeus - running on port 9090
+http://localhost:9090/targets
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
@@ -65,7 +66,25 @@ Centralized Monitoring, Grafana?
 
 
 
+Requirements:
+Java 11 _ LTS, tested using OpenJDK
 
+>java --version
+>
+>
+Docker
+- Prometheus and others?
+
+
+BUILD:
+mvn clean install
+
+docker-compose build
+
+docker-compose up
+
+
+Use EXAMPLE: http://localhost:8080/romannumeral?query=2
 
 
 ---------------
@@ -78,7 +97,7 @@ Dockerized web service that takes in a number and outputs a Roman numeral.
 
 
 ## Build New Container with Tag roman-numerals
-docker build -f Dockerfile -t roman-numerals .
+docker build -f Dockerfile -t roman-numeral .
 
 ## Run Container
 docker run -p 8080:8080 -it -v C:\Users\tatoh\workspace\roman-numeral-conversion\logs:/logs roman-numerals
@@ -106,6 +125,7 @@ docker run -d --name prometheus -p 9090:9090 -v C:\Users\tatoh\workspace\roman-n
 
 
 FUTURE ENHANCEMENTS:
+- Jenkins 
 - Grafana
 - Splunk
 
